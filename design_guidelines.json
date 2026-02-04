@@ -1,0 +1,115 @@
+{
+  "design_system": {
+    "typography": {
+      "font_family": {
+        "heading": "Fraunces, serif",
+        "body": "Nunito, sans-serif",
+        "accent": "Caveat, cursive"
+      },
+      "scale": {
+        "h1": "text-4xl md:text-6xl font-bold tracking-tight",
+        "h2": "text-3xl md:text-4xl font-semibold",
+        "body": "text-lg md:text-xl leading-relaxed",
+        "caption": "text-sm md:text-base font-medium text-muted-foreground"
+      }
+    },
+    "colors": {
+      "palette": {
+        "primary": "#FF9EAA",
+        "secondary": "#C5A3FF",
+        "accent": "#FF5D8F",
+        "background": "#FFF9FA",
+        "text": {
+          "primary": "#592E36",
+          "secondary": "#8C5E69"
+        },
+        "success": "#88D498",
+        "card_bg": "#FFFFFF"
+      },
+      "gradients": {
+        "romantic": "bg-gradient-to-br from-[#FF9EAA] to-[#C5A3FF]",
+        "soft_glow": "bg-gradient-to-tr from-[#FFF0F5] via-[#FFF9FA] to-[#E6E6FA]"
+      }
+    },
+    "spacing": {
+      "container_padding": "p-6 md:p-12 lg:p-16",
+      "section_gap": "gap-8 md:gap-12"
+    },
+    "radius": {
+      "card": "rounded-3xl",
+      "button": "rounded-full"
+    },
+    "shadows": {
+      "soft": "shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+      "floating": "shadow-[0_20px_50px_rgb(255,158,170,0.15)]",
+      "inner": "shadow-inner"
+    }
+  },
+  "visual_assets": {
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1767552659473-9a541393de94?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwzfHxzb2Z0JTIwcGFzdGVsJTIwZmxvd2VycyUyMHJvbWFudGljJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NzAyMjY1NTZ8MA&ixlib=rb-4.1.0&q=85",
+        "category": "background",
+        "description": "Soft pink and peach ranunculus flowers, ideal for Hero section background or subtle overlay."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1653151189412-c190a965ca4b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwxfHxwaW5rJTIwaGVhcnQlMjBiYWxsb29uJTIwcGFzdGVsJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NzAyMjY1NjZ8MA&ixlib=rb-4.1.0&q=85",
+        "category": "celebration",
+        "description": "White heart shaped balloons on pink background, perfect for the Final Proposal page."
+      }
+    ],
+    "icons": {
+      "library": "lucide-react",
+      "custom_shapes": "Use CSS/SVG for Heart shapes in radio buttons"
+    }
+  },
+  "components": {
+    "ValentineCard": {
+      "description": "The main container for all content. Resembles a high-quality paper invitation.",
+      "styles": "bg-white/80 backdrop-blur-md border border-white/50 shadow-xl rounded-3xl p-8 md:p-12 max-w-2xl mx-auto relative overflow-hidden",
+      "animation": "initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5, type: 'spring' }}"
+    },
+    "HeartButton": {
+      "description": "Primary action button. Pill shaped, bouncy hover.",
+      "styles": "bg-[#FF5D8F] hover:bg-[#FF3B75] text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg flex items-center justify-center gap-2"
+    },
+    "OptionCard": {
+      "description": "For multiple choice answers. Selectable card style.",
+      "styles": "cursor-pointer border-2 border-transparent hover:border-[#FF9EAA] hover:bg-[#FFF0F5] bg-white p-4 rounded-2xl transition-all duration-200 flex items-center gap-4 group data-[state=checked]:border-[#FF5D8F] data-[state=checked]:bg-[#FFF0F5]"
+    },
+    "ProgressBar": {
+      "description": "Shows progress through the 3 rounds.",
+      "styles": "h-2 bg-[#F0E6EF] rounded-full overflow-hidden w-full max-w-xs mx-auto mb-8"
+    }
+  },
+  "layout_strategy": {
+    "global": "min-h-screen w-full bg-[#FFF9FA] relative flex flex-col items-center justify-center py-12 px-4 overflow-x-hidden",
+    "background_layer": "absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-multiply",
+    "content_layer": "relative z-10 w-full"
+  },
+  "motion_guidelines": {
+    "page_transition": "AnimatePresence mode='wait'. Variants: { enter: { x: 20, opacity: 0 }, center: { x: 0, opacity: 1 }, exit: { x: -20, opacity: 0 } }",
+    "micro_interactions": "Buttons should scale down slightly on tap (0.95). Radio options should 'pop' when selected.",
+    "confetti": "Use 'react-confetti' on the Final Page only. Recycle={true} for first 5 seconds, then false."
+  },
+  "accessibility_rules": {
+    "contrast": "Ensure text color #592E36 is used on light backgrounds for sufficient contrast.",
+    "keyboard": "All form inputs (radio groups) must be keyboard navigable.",
+    "motion": "Respect 'prefers-reduced-motion' by disabling big transitions."
+  },
+  "libraries_to_install": [
+    "react-confetti",
+    "framer-motion",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "universal_guidelines": [
+    "Do NOT use gradients for text to ensure readability.",
+    "Avoid generic 'alert' dialogs. Use inline validation or friendly toasts.",
+    "The 'No' option (if any) should be unclickable or run away (optional Easter egg), but the prompt says 'Refusal is not an option', so visually imply it but maybe make it disabled or funny.",
+    "Use 'Fraunces' font for all Headings (H1, H2, H3). Use 'Nunito' for body text.",
+    "Add a subtle 'noise' texture to the background to make it feel like paper."
+  ],
+  "instructions_to_main_agent": "1. Install 'react-confetti' and 'framer-motion' first.\n2. Create a 'Layout' component that handles the background and centered alignment.\n3. Build the 'ValentineCard' component as the core wrapper.\n4. Implement the 4-page flow using a simple state machine (step 1 to 4) inside a single Page or using React Router if preferred (Single Page State is easier here).\n5. Use the provided Image URLs for the Home (Background) and Final (Balloons) pages.\n6. For the 'Image Boxes', use placeholders that the user can swap later, or use the flower image as a placeholder."
+}
