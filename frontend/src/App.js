@@ -443,7 +443,7 @@ const HomePage = ({ onNext }) => {
           </p>
         </motion.div>
 
-        {/* Image Box for Personalization */}
+        {/* Image Box for Personalization - Sona's Photo */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -451,8 +451,8 @@ const HomePage = ({ onNext }) => {
           className="my-4 sm:my-6 mx-auto w-40 h-40 sm:w-48 sm:h-48 rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-4 border-[#FF9EAA]"
         >
           <img 
-            src="https://images.unsplash.com/photo-1767552659473-9a541393de94?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwzfHxzb2Z0JTIwcGFzdGVsJTIwZmxvd2VycyUyMHJvbWFudGljJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NzAyMjY1NTZ8MA&ixlib=rb-4.1.0&q=85"
-            alt="Valentine decorative"
+            src="https://customer-assets.emergentagent.com/job_cupid-hq-sona/artifacts/rwi446tg_1000222571.png"
+            alt="Sona"
             className="w-full h-full object-cover"
           />
         </motion.div>
