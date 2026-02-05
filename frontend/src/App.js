@@ -777,7 +777,7 @@ const FinalPage = ({ onAccept, showThankYou, onDownloadCertificate, onShareWhats
               </p>
             </motion.div>
 
-            {/* Image Box */}
+            {/* Image Box - Couple Photo */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -785,8 +785,8 @@ const FinalPage = ({ onAccept, showThankYou, onDownloadCertificate, onShareWhats
               className="mx-auto w-48 h-48 sm:w-64 sm:h-64 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-4 border-[#C5A3FF]"
             >
               <img 
-                src="https://images.unsplash.com/photo-1653151189412-c190a965ca4b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwxfHxwaW5rJTIwaGVhcnQlMjBiYWxsb29uJTIwcGFzdGVsJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NzAyMjY1NjZ8MA&ixlib=rb-4.1.0&q=85"
-                alt="Heart balloons"
+                src="https://customer-assets.emergentagent.com/job_cupid-hq-sona/artifacts/d4x6167q_1000238583.jpg"
+                alt="Sona and Shri Kant Pandey"
                 className="w-full h-full object-cover"
               />
             </motion.div>
