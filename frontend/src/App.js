@@ -178,7 +178,7 @@ function App() {
           <div class="subtitle">This certifies that</div>
           <div class="recipient">Sona</div>
           <div class="subtitle">has been officially selected and approved for the prestigious position of</div>
-          <div class="recipient" style="font-size: 28px;">Shri Pandey's Valentine (2026 Edition)</div>
+          <div class="recipient" style="font-size: 28px;">Shri Kant Pandey's Valentine (2026 Edition)</div>
           
           <div class="details">
             <div class="detail-item">
