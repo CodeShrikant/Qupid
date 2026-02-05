@@ -563,7 +563,7 @@ const RoundOne = ({ answers, onAnswer, onNext, progress }) => {
 
         {/* Q3 */}
         <div className="space-y-3">
-          <Label className="text-base sm:text-lg font-semibold text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>Q3. How cute is Shri Pandey today?</Label>
+          <Label className="text-base sm:text-lg font-semibold text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>Q3. How cute is Shri Kant Pandey today?</Label>
           <RadioGroup value={answers.q3} onValueChange={(val) => onAnswer('q3', val)} data-testid="q3-radio-group">
             <div className="space-y-2 sm:space-y-3">
               {['Cute', 'Very cute', 'Extremely cute (send him kisses) 😤❤️'].map((option, idx) => (
