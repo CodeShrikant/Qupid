@@ -539,7 +539,7 @@ const RoundOne = ({ answers, onAnswer, onNext, progress }) => {
 
         {/* Q2 */}
         <div className="space-y-3">
-          <Label className="text-base sm:text-lg font-semibold text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>Q2. Shri Pandey is your:</Label>
+          <Label className="text-base sm:text-lg font-semibold text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>Q2. Shri Kant Pandey is your:</Label>
           <RadioGroup value={answers.q2} onValueChange={(val) => onAnswer('q2', val)} data-testid="q2-radio-group">
             <div className="space-y-2 sm:space-y-3">
               {['Husband ✅', 'Best Husband ✅', 'Full-time admirer ✅😂'].map((option, idx) => (
