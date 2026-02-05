@@ -244,43 +244,43 @@ const RoundOne = ({ answers, onAnswer, onNext, progress }) => {
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.5, type: 'spring' }}
-      className="bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_20px_50px_rgb(255,158,170,0.15)] rounded-3xl p-8 md:p-12 relative overflow-hidden"
+      className="bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_20px_50px_rgb(255,158,170,0.15)] rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 relative overflow-hidden"
       data-testid="round-one-page"
     >
       {/* Progress Bar */}
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <Progress value={progress} className="h-2 bg-[#F0E6EF]" data-testid="progress-bar" />
-        <p className="text-sm text-center mt-2 text-[#8C5E69]" style={{ fontFamily: 'Nunito, sans-serif' }}>Round 1 of 3</p>
+        <p className="text-xs sm:text-sm text-center mt-2 text-[#8C5E69]" style={{ fontFamily: 'Nunito, sans-serif' }}>Round 1 of 3</p>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-6 sm:space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#592E36] mb-2" style={{ fontFamily: 'Fraunces, serif' }} data-testid="round-one-title">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#592E36] mb-2" style={{ fontFamily: 'Fraunces, serif' }} data-testid="round-one-title">
             🪪 Round 1: Identity Verification
           </h2>
-          <p className="text-lg text-[#8C5E69]" style={{ fontFamily: 'Nunito, sans-serif' }}>
+          <p className="text-base sm:text-lg text-[#8C5E69]" style={{ fontFamily: 'Nunito, sans-serif' }}>
             Please confirm the following details to continue:
           </p>
         </div>
 
         {/* Q1 */}
         <div className="space-y-3">
-          <Label className="text-lg font-semibold text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>Q1. Your name is:</Label>
+          <Label className="text-base sm:text-lg font-semibold text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>Q1. Your name is:</Label>
           <RadioGroup value={answers.q1} onValueChange={(val) => onAnswer('q1', val)} data-testid="q1-radio-group">
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {['Sona', 'Sonaaa', 'The cutest human alive 😌'].map((option, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`cursor-pointer border-2 ${answers.q1 === option ? 'border-[#FF5D8F] bg-[#FFF0F5]' : 'border-transparent hover:border-[#FF9EAA] hover:bg-[#FFF0F5]'} bg-white p-4 rounded-2xl transition-all duration-200 flex items-center gap-4`}
+                  className={`cursor-pointer border-2 ${answers.q1 === option ? 'border-[#FF5D8F] bg-[#FFF0F5]' : 'border-transparent hover:border-[#FF9EAA] hover:bg-[#FFF0F5]'} bg-white p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-200 flex items-center gap-3 sm:gap-4 min-h-[48px]`}
                   data-testid={`q1-option-${idx}`}
                 >
                   <RadioGroupItem value={option} id={`q1-${idx}`} className="text-[#FF5D8F]" />
-                  <Label htmlFor={`q1-${idx}`} className="text-lg cursor-pointer flex-1" style={{ fontFamily: 'Nunito, sans-serif' }}>
+                  <Label htmlFor={`q1-${idx}`} className="text-base sm:text-lg cursor-pointer flex-1" style={{ fontFamily: 'Nunito, sans-serif' }}>
                     {option}
                   </Label>
-                  {answers.q1 === option && <Heart className="w-5 h-5 text-[#FF5D8F] fill-[#FF5D8F]" />}
+                  {answers.q1 === option && <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF5D8F] fill-[#FF5D8F]" />}
                 </motion.div>
               ))}
             </div>
@@ -289,22 +289,22 @@ const RoundOne = ({ answers, onAnswer, onNext, progress }) => {
 
         {/* Q2 */}
         <div className="space-y-3">
-          <Label className="text-lg font-semibold text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>Q2. Shri Pandey is your:</Label>
+          <Label className="text-base sm:text-lg font-semibold text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>Q2. Shri Pandey is your:</Label>
           <RadioGroup value={answers.q2} onValueChange={(val) => onAnswer('q2', val)} data-testid="q2-radio-group">
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {['Husband ✅', 'Best Husband ✅', 'Full-time admirer ✅😂'].map((option, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`cursor-pointer border-2 ${answers.q2 === option ? 'border-[#FF5D8F] bg-[#FFF0F5]' : 'border-transparent hover:border-[#FF9EAA] hover:bg-[#FFF0F5]'} bg-white p-4 rounded-2xl transition-all duration-200 flex items-center gap-4`}
+                  className={`cursor-pointer border-2 ${answers.q2 === option ? 'border-[#FF5D8F] bg-[#FFF0F5]' : 'border-transparent hover:border-[#FF9EAA] hover:bg-[#FFF0F5]'} bg-white p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-200 flex items-center gap-3 sm:gap-4 min-h-[48px]`}
                   data-testid={`q2-option-${idx}`}
                 >
                   <RadioGroupItem value={option} id={`q2-${idx}`} className="text-[#FF5D8F]" />
-                  <Label htmlFor={`q2-${idx}`} className="text-lg cursor-pointer flex-1" style={{ fontFamily: 'Nunito, sans-serif' }}>
+                  <Label htmlFor={`q2-${idx}`} className="text-base sm:text-lg cursor-pointer flex-1" style={{ fontFamily: 'Nunito, sans-serif' }}>
                     {option}
                   </Label>
-                  {answers.q2 === option && <Heart className="w-5 h-5 text-[#FF5D8F] fill-[#FF5D8F]" />}
+                  {answers.q2 === option && <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF5D8F] fill-[#FF5D8F]" />}
                 </motion.div>
               ))}
             </div>
@@ -313,22 +313,22 @@ const RoundOne = ({ answers, onAnswer, onNext, progress }) => {
 
         {/* Q3 */}
         <div className="space-y-3">
-          <Label className="text-lg font-semibold text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>Q3. How cute is Shri Pandey today?</Label>
+          <Label className="text-base sm:text-lg font-semibold text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>Q3. How cute is Shri Pandey today?</Label>
           <RadioGroup value={answers.q3} onValueChange={(val) => onAnswer('q3', val)} data-testid="q3-radio-group">
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {['Cute', 'Very cute', 'Extremely cute (send him kisses) 😤❤️'].map((option, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`cursor-pointer border-2 ${answers.q3 === option ? 'border-[#FF5D8F] bg-[#FFF0F5]' : 'border-transparent hover:border-[#FF9EAA] hover:bg-[#FFF0F5]'} bg-white p-4 rounded-2xl transition-all duration-200 flex items-center gap-4`}
+                  className={`cursor-pointer border-2 ${answers.q3 === option ? 'border-[#FF5D8F] bg-[#FFF0F5]' : 'border-transparent hover:border-[#FF9EAA] hover:bg-[#FFF0F5]'} bg-white p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-200 flex items-center gap-3 sm:gap-4 min-h-[48px]`}
                   data-testid={`q3-option-${idx}`}
                 >
                   <RadioGroupItem value={option} id={`q3-${idx}`} className="text-[#FF5D8F]" />
-                  <Label htmlFor={`q3-${idx}`} className="text-lg cursor-pointer flex-1" style={{ fontFamily: 'Nunito, sans-serif' }}>
+                  <Label htmlFor={`q3-${idx}`} className="text-base sm:text-lg cursor-pointer flex-1" style={{ fontFamily: 'Nunito, sans-serif' }}>
                     {option}
                   </Label>
-                  {answers.q3 === option && <Heart className="w-5 h-5 text-[#FF5D8F] fill-[#FF5D8F]" />}
+                  {answers.q3 === option && <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF5D8F] fill-[#FF5D8F]" />}
                 </motion.div>
               ))}
             </div>
@@ -340,7 +340,7 @@ const RoundOne = ({ answers, onAnswer, onNext, progress }) => {
           whileTap={{ scale: canProceed ? 0.95 : 1 }}
           onClick={onNext}
           disabled={!canProceed}
-          className={`w-full font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 text-lg flex items-center justify-center gap-2 mt-8 ${
+          className={`w-full font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full shadow-lg transition-all duration-300 text-base sm:text-lg flex items-center justify-center gap-2 mt-6 sm:mt-8 min-h-[48px] ${
             canProceed
               ? 'bg-[#FF5D8F] hover:bg-[#FF3B75] text-white hover:shadow-xl cursor-pointer'
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'
