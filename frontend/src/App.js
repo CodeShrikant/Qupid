@@ -854,7 +854,7 @@ const FinalPage = ({ onAccept, showThankYou, onDownloadCertificate, onShareWhats
 
             <div className="bg-[#FFF0F5] border-2 border-[#FF9EAA] rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 text-left space-y-3">
               <p className="text-base sm:text-lg md:text-xl text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                Your Valentine (Shri Pandey) will now proceed with:
+                Your Valentine (Shri Kant Pandey) will now proceed with:
               </p>
               <div className="space-y-2 text-base sm:text-lg">
                 <p className="flex items-center gap-3 text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
