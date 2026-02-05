@@ -362,7 +362,12 @@ Date: ${new Date().toLocaleDateString()}`;
               exit="exit"
               transition={{ duration: 0.4 }}
             >
-              <FinalPage onAccept={handleAccept} showThankYou={showThankYou} />
+              <FinalPage 
+                onAccept={handleAccept} 
+                showThankYou={showThankYou} 
+                onDownloadCertificate={handleDownloadCertificate}
+                onShareWhatsApp={handleShareWhatsApp}
+              />
             </motion.div>
           )}
         </AnimatePresence>
