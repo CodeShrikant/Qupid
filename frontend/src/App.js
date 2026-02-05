@@ -43,7 +43,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#FFF9FA] relative flex flex-col items-center justify-center py-12 px-4 overflow-x-hidden">
+    <div className="min-h-screen w-full bg-[#FFF9FA] relative flex flex-col items-center justify-start sm:justify-center py-4 sm:py-12 px-3 sm:px-4 overflow-x-hidden">
       {/* Background Image Layer */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none opacity-20"
@@ -61,13 +61,13 @@ function App() {
           width={window.innerWidth}
           height={window.innerHeight}
           recycle={false}
-          numberOfPieces={500}
+          numberOfPieces={300}
           colors={['#FF9EAA', '#C5A3FF', '#FF5D8F', '#88D498', '#FFF0F5']}
         />
       )}
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-2xl">
+      <div className="relative z-10 w-full max-w-2xl my-auto">
         <AnimatePresence mode="wait">
           {step === 1 && (
             <motion.div
