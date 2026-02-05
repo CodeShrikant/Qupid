@@ -724,7 +724,7 @@ const RoundTwo = ({ answers, onAnswer, onNext, progress }) => {
   );
 };
 
-const FinalPage = ({ onAccept, showThankYou }) => {
+const FinalPage = ({ onAccept, showThankYou, onDownloadCertificate, onShareWhatsApp }) => {
   return (
     <motion.div
       initial={{ scale: 0.9, opacity: 0 }}
