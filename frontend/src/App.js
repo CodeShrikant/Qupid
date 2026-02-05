@@ -19,6 +19,7 @@ function App() {
   });
   const [showConfetti, setShowConfetti] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
+  const certificateRef = useRef(null);
 
   const handleAnswer = (question, value) => {
     setAnswers(prev => ({ ...prev, [question]: value }));
@@ -32,6 +33,250 @@ function App() {
     setShowConfetti(true);
     setShowThankYou(true);
     setTimeout(() => setShowConfetti(false), 5000);
+  };
+
+  const handleDownloadCertificate = () => {
+    // Create certificate HTML
+    const certificateHTML = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Nunito:wght@400;600&family=Caveat:wght@400;700&display=swap');
+          
+          body {
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #FFF0F5 0%, #E6E6FA 100%);
+            font-family: 'Nunito', sans-serif;
+          }
+          
+          .certificate {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255,158,170,0.3);
+            border: 8px solid #FF9EAA;
+            position: relative;
+          }
+          
+          .certificate::before {
+            content: '💘';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+          }
+          
+          h1 {
+            font-family: 'Fraunces', serif;
+            color: #FF5D8F;
+            font-size: 48px;
+            text-align: center;
+            margin: 0 0 20px 0;
+          }
+          
+          h2 {
+            font-family: 'Fraunces', serif;
+            color: #592E36;
+            font-size: 36px;
+            text-align: center;
+            margin: 0 0 40px 0;
+          }
+          
+          .subtitle {
+            text-align: center;
+            color: #8C5E69;
+            font-size: 20px;
+            margin-bottom: 40px;
+          }
+          
+          .recipient {
+            text-align: center;
+            font-size: 32px;
+            color: #FF5D8F;
+            font-weight: bold;
+            margin: 30px 0;
+            font-family: 'Fraunces', serif;
+          }
+          
+          .details {
+            background: #FFF0F5;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 2px solid #FF9EAA;
+          }
+          
+          .detail-item {
+            margin: 15px 0;
+            font-size: 18px;
+            color: #592E36;
+            display: flex;
+            align-items: center;
+          }
+          
+          .detail-label {
+            font-weight: 600;
+            color: #FF5D8F;
+            margin-right: 10px;
+          }
+          
+          .signature {
+            margin-top: 50px;
+            text-align: center;
+          }
+          
+          .signature-line {
+            border-top: 2px solid #592E36;
+            width: 300px;
+            margin: 20px auto 10px;
+          }
+          
+          .signature-name {
+            font-family: 'Caveat', cursive;
+            font-size: 32px;
+            color: #FF5D8F;
+            font-weight: 700;
+          }
+          
+          .date {
+            text-align: center;
+            color: #8C5E69;
+            margin-top: 30px;
+            font-size: 16px;
+          }
+          
+          .seal {
+            position: absolute;
+            bottom: 40px;
+            right: 60px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #FF5D8F;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fraunces', serif;
+            font-size: 12px;
+            text-align: center;
+            border: 4px solid #FF9EAA;
+            transform: rotate(-15deg);
+          }
+        </style>
+      </head>
+      <body>
+        <div class="certificate">
+          <h1>🎊 Official Certificate 🎊</h1>
+          <h2>Valentine Application Approved</h2>
+          <div class="subtitle">This certifies that</div>
+          <div class="recipient">Sona</div>
+          <div class="subtitle">has been officially selected and approved for the prestigious position of</div>
+          <div class="recipient" style="font-size: 28px;">Shri Pandey's Valentine (2026 Edition)</div>
+          
+          <div class="details">
+            <div class="detail-item">
+              <span class="detail-label">Identity Confirmed:</span>
+              <span>${answers.q1}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Relationship Status:</span>
+              <span>${answers.q2}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Cuteness Level:</span>
+              <span>${answers.q3}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Preferred Date:</span>
+              <span>${answers.q4}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Romance Mode:</span>
+              <span>${answers.q5}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Snack Choice:</span>
+              <span>${answers.q6}</span>
+            </div>
+          </div>
+          
+          <div class="subtitle" style="margin-top: 30px;">
+            ✅ Authorized benefits include:<br/>
+            • Date planning<br/>
+            • Surprise arrangements<br/>
+            • Unlimited kisses 😘
+          </div>
+          
+          <div class="signature">
+            <div class="signature-line"></div>
+            <div class="signature-name">Shri Pandey</div>
+            <div style="color: #8C5E69;">Your Forever Valentine</div>
+          </div>
+          
+          <div class="date">
+            Issued on: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}<br/>
+            Certificate No: VP-2026-${Math.random().toString(36).substr(2, 9).toUpperCase()}
+          </div>
+          
+          <div class="seal">
+            CERTIFIED<br/>LOVE<br/>2026
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
+
+    // Create a blob and download
+    const blob = new Blob([certificateHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Sona_Valentine_Certificate_2026.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleShareWhatsApp = () => {
+    const message = `💘 *VALENTINE APPLICATION APPROVED* 💘
+
+🎊 Sona's Official Valentine Certificate 🎊
+
+I, Sona, have been officially approved as Shri Pandey's Valentine (2026 Edition)!
+
+📋 *My Responses:*
+
+*Round 1: Identity Verification*
+Q1. My name: ${answers.q1}
+Q2. Shri Pandey is my: ${answers.q2}
+Q3. His cuteness level: ${answers.q3}
+
+*Round 2: Romance Preferences*
+Q4. Ideal Valentine plan: ${answers.q4}
+Q5. Mood level: ${answers.q5}
+Q6. Snack expectation: ${answers.q6}
+
+✅ *Benefits Unlocked:*
+• Date planning
+• Surprise arrangements
+• Unlimited kisses 😘
+
+— Yours forever,
+Shri Pandey 😌💘
+
+Certificate No: VP-2026-${Math.random().toString(36).substr(2, 9).toUpperCase()}
+Date: ${new Date().toLocaleDateString()}`;
+
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const progress = ((step - 1) / 3) * 100;
