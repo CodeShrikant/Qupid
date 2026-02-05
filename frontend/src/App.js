@@ -480,12 +480,12 @@ const FinalPage = ({ onAccept, showThankYou }) => {
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.5, type: 'spring' }}
-      className="bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_20px_50px_rgb(255,158,170,0.15)] rounded-3xl p-8 md:p-12 relative overflow-hidden"
+      className="bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_20px_50px_rgb(255,158,170,0.15)] rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 relative overflow-hidden"
       data-testid="final-page"
     >
       {/* Background Image for Final Page */}
       <div 
-        className="absolute inset-0 opacity-10 rounded-3xl"
+        className="absolute inset-0 opacity-10 rounded-2xl sm:rounded-3xl"
         style={{
           backgroundImage: 'url(https://images.unsplash.com/photo-1653151189412-c190a965ca4b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwxfHxwaW5rJTIwaGVhcnQlMjBiYWxsb29uJTIwcGFzdGVsJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NzAyMjY1NjZ8MA&ixlib=rb-4.1.0&q=85)',
           backgroundSize: 'cover',
@@ -493,7 +493,7 @@ const FinalPage = ({ onAccept, showThankYou }) => {
         }}
       />
 
-      <div className="relative space-y-8">
+      <div className="relative space-y-6 sm:space-y-8">
         {!showThankYou ? (
           <>
             <div className="text-center">
@@ -501,11 +501,11 @@ const FinalPage = ({ onAccept, showThankYou }) => {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: 'spring' }}
-                className="flex justify-center mb-4"
+                className="flex justify-center mb-3 sm:mb-4"
               >
-                <Sparkles className="w-20 h-20 text-[#FF5D8F]" />
+                <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 text-[#FF5D8F]" />
               </motion.div>
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#592E36] mb-6" style={{ fontFamily: 'Fraunces, serif' }} data-testid="final-title">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#592E36] mb-4 sm:mb-6" style={{ fontFamily: 'Fraunces, serif' }} data-testid="final-title">
                 🎉 Final Confirmation
               </h2>
             </div>
@@ -514,15 +514,15 @@ const FinalPage = ({ onAccept, showThankYou }) => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="bg-[#FFF0F5] border-2 border-[#FF9EAA] rounded-3xl p-6 md:p-8 text-center space-y-4"
+              className="bg-[#FFF0F5] border-2 border-[#FF9EAA] rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 text-center space-y-3 sm:space-y-4"
             >
-              <p className="text-xl md:text-2xl leading-relaxed text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
+              <p className="text-lg sm:text-xl md:text-2xl leading-relaxed text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
                 Dear Sona,
               </p>
-              <p className="text-lg md:text-xl leading-relaxed text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
                 After careful evaluation, emotional background checks, and love verification…
               </p>
-              <p className="text-3xl md:text-4xl font-bold text-[#FF5D8F] my-6" style={{ fontFamily: 'Fraunces, serif' }}>
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#FF5D8F] my-4 sm:my-6" style={{ fontFamily: 'Fraunces, serif' }}>
                 💘 Will you be my Valentine?
               </p>
             </motion.div>
@@ -532,7 +532,7 @@ const FinalPage = ({ onAccept, showThankYou }) => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="mx-auto w-64 h-64 rounded-3xl overflow-hidden shadow-xl border-4 border-[#C5A3FF]"
+              className="mx-auto w-48 h-48 sm:w-64 sm:h-64 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-4 border-[#C5A3FF]"
             >
               <img 
                 src="https://images.unsplash.com/photo-1653151189412-c190a965ca4b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwxfHxwaW5rJTIwaGVhcnQlMjBiYWxsb29uJTIwcGFzdGVsJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NzAyMjY1NjZ8MA&ixlib=rb-4.1.0&q=85"
@@ -545,13 +545,13 @@ const FinalPage = ({ onAccept, showThankYou }) => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              className="flex flex-col gap-3 sm:gap-4 justify-center items-stretch sm:items-center"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onAccept}
-                className="bg-[#FF5D8F] hover:bg-[#FF3B75] text-white font-bold py-4 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg"
+                className="bg-[#FF5D8F] hover:bg-[#FF3B75] text-white font-bold py-3 sm:py-4 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg min-h-[48px]"
                 style={{ fontFamily: 'Nunito, sans-serif' }}
                 data-testid="accept-yes-btn"
               >
@@ -561,7 +561,7 @@ const FinalPage = ({ onAccept, showThankYou }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onAccept}
-                className="bg-[#C5A3FF] hover:bg-[#B18FFF] text-white font-bold py-4 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg"
+                className="bg-[#C5A3FF] hover:bg-[#B18FFF] text-white font-bold py-3 sm:py-4 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg min-h-[48px]"
                 style={{ fontFamily: 'Nunito, sans-serif' }}
                 data-testid="accept-yes-chocolate-btn"
               >
@@ -571,7 +571,7 @@ const FinalPage = ({ onAccept, showThankYou }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onAccept}
-                className="bg-[#88D498] hover:bg-[#6FC084] text-white font-bold py-4 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg"
+                className="bg-[#88D498] hover:bg-[#6FC084] text-white font-bold py-3 sm:py-4 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg min-h-[48px]"
                 style={{ fontFamily: 'Nunito, sans-serif' }}
                 data-testid="accept-yes-forever-btn"
               >
@@ -584,7 +584,7 @@ const FinalPage = ({ onAccept, showThankYou }) => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: 'spring' }}
-            className="text-center space-y-6"
+            className="text-center space-y-4 sm:space-y-6"
             data-testid="thank-you-section"
           >
             <motion.div
@@ -592,41 +592,41 @@ const FinalPage = ({ onAccept, showThankYou }) => {
               transition={{ duration: 0.5, repeat: 3 }}
               className="flex justify-center"
             >
-              <CheckCircle2 className="w-24 h-24 text-[#88D498]" />
+              <CheckCircle2 className="w-20 h-20 sm:w-24 sm:h-24 text-[#88D498]" />
             </motion.div>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-[#592E36]" style={{ fontFamily: 'Fraunces, serif' }}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#592E36]" style={{ fontFamily: 'Fraunces, serif' }}>
               🎊 Application Approved!
             </h2>
-            <p className="text-2xl md:text-3xl font-semibold text-[#FF5D8F]" style={{ fontFamily: 'Fraunces, serif' }}>
+            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#FF5D8F]" style={{ fontFamily: 'Fraunces, serif' }}>
               Congratulations Sona ❤️
             </p>
 
-            <div className="bg-[#FFF0F5] border-2 border-[#FF9EAA] rounded-3xl p-6 md:p-8 text-left space-y-3">
-              <p className="text-lg md:text-xl text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
+            <div className="bg-[#FFF0F5] border-2 border-[#FF9EAA] rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 text-left space-y-3">
+              <p className="text-base sm:text-lg md:text-xl text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
                 Your Valentine (Shri Pandey) will now proceed with:
               </p>
-              <div className="space-y-2 text-lg">
+              <div className="space-y-2 text-base sm:text-lg">
                 <p className="flex items-center gap-3 text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                  <CheckCircle2 className="w-6 h-6 text-[#88D498]" />
+                  <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-[#88D498] flex-shrink-0" />
                   date planning
                 </p>
                 <p className="flex items-center gap-3 text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                  <CheckCircle2 className="w-6 h-6 text-[#88D498]" />
+                  <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-[#88D498] flex-shrink-0" />
                   surprise arrangements
                 </p>
                 <p className="flex items-center gap-3 text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                  <CheckCircle2 className="w-6 h-6 text-[#88D498]" />
+                  <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-[#88D498] flex-shrink-0" />
                   unlimited kisses 😘
                 </p>
               </div>
             </div>
 
-            <div className="pt-6 border-t-2 border-[#FF9EAA]">
-              <p className="text-xl md:text-2xl italic text-[#592E36]" style={{ fontFamily: 'Caveat, cursive' }}>
+            <div className="pt-4 sm:pt-6 border-t-2 border-[#FF9EAA]">
+              <p className="text-lg sm:text-xl md:text-2xl italic text-[#592E36]" style={{ fontFamily: 'Caveat, cursive' }}>
                 — Yours forever,
               </p>
-              <p className="text-2xl md:text-3xl font-bold text-[#FF5D8F] mt-2" style={{ fontFamily: 'Fraunces, serif' }}>
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-[#FF5D8F] mt-2" style={{ fontFamily: 'Fraunces, serif' }}>
                 Shri Pandey 😌💘
               </p>
             </div>
