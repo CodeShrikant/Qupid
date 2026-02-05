@@ -432,7 +432,7 @@ const HomePage = ({ onNext }) => {
           </p>
           <div className="bg-[#FFF0F5] border-2 border-[#FF9EAA] rounded-xl sm:rounded-2xl p-3 sm:p-4 inline-block">
             <p className="text-lg sm:text-xl md:text-2xl font-bold text-[#FF5D8F]" style={{ fontFamily: 'Fraunces, serif' }}>
-              ✅ Shri Pandey's Valentine (2026 Edition)
+              ✅ Shri Kant Pandey's Valentine (2026 Edition)
             </p>
           </div>
           <p className="text-base sm:text-lg md:text-xl leading-relaxed text-[#8C5E69]" style={{ fontFamily: 'Nunito, sans-serif' }}>
