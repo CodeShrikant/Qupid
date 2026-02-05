@@ -132,7 +132,7 @@ const HomePage = ({ onNext }) => {
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.5, type: 'spring' }}
-      className="bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_20px_50px_rgb(255,158,170,0.15)] rounded-3xl p-8 md:p-12 relative overflow-hidden"
+      className="bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_20px_50px_rgb(255,158,170,0.15)] rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 relative overflow-hidden"
       data-testid="home-page"
     >
       {/* Decorative Elements */}
