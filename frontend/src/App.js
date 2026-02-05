@@ -147,21 +147,21 @@ const HomePage = ({ onNext }) => {
         transition={{ duration: 3, repeat: Infinity }}
       />
 
-      <div className="relative text-center space-y-6">
+      <div className="relative text-center space-y-4 sm:space-y-6">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="flex justify-center mb-4"
+          className="flex justify-center mb-2 sm:mb-4"
         >
-          <Heart className="w-16 h-16 text-[#FF5D8F] fill-[#FF5D8F]" />
+          <Heart className="w-12 h-12 sm:w-16 sm:h-16 text-[#FF5D8F] fill-[#FF5D8F]" />
         </motion.div>
 
         <motion.h1
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-4xl md:text-6xl font-bold tracking-tight text-[#592E36]"
+          className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-[#592E36] leading-tight"
           style={{ fontFamily: 'Fraunces, serif' }}
           data-testid="home-title"
         >
@@ -172,23 +172,23 @@ const HomePage = ({ onNext }) => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="space-y-4"
+          className="space-y-3 sm:space-y-4"
         >
-          <p className="text-lg md:text-xl leading-relaxed text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
+          <p className="text-base sm:text-lg md:text-xl leading-relaxed text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
             Hello Sona,
           </p>
-          <p className="text-lg md:text-xl leading-relaxed text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
+          <p className="text-base sm:text-lg md:text-xl leading-relaxed text-[#592E36]" style={{ fontFamily: 'Nunito, sans-serif' }}>
             You have been shortlisted for the prestigious position of:
           </p>
-          <div className="bg-[#FFF0F5] border-2 border-[#FF9EAA] rounded-2xl p-4 inline-block">
-            <p className="text-xl md:text-2xl font-bold text-[#FF5D8F]" style={{ fontFamily: 'Fraunces, serif' }}>
+          <div className="bg-[#FFF0F5] border-2 border-[#FF9EAA] rounded-xl sm:rounded-2xl p-3 sm:p-4 inline-block">
+            <p className="text-lg sm:text-xl md:text-2xl font-bold text-[#FF5D8F]" style={{ fontFamily: 'Fraunces, serif' }}>
               ✅ Shri Pandey's Valentine (2026 Edition)
             </p>
           </div>
-          <p className="text-lg md:text-xl leading-relaxed text-[#8C5E69]" style={{ fontFamily: 'Nunito, sans-serif' }}>
+          <p className="text-base sm:text-lg md:text-xl leading-relaxed text-[#8C5E69]" style={{ fontFamily: 'Nunito, sans-serif' }}>
             Before proceeding, kindly complete this short questionnaire.
           </p>
-          <p className="text-base md:text-lg italic text-[#FF5D8F]" style={{ fontFamily: 'Caveat, cursive' }}>
+          <p className="text-sm sm:text-base md:text-lg italic text-[#FF5D8F]" style={{ fontFamily: 'Caveat, cursive' }}>
             (Refusal is not an option 😌)
           </p>
         </motion.div>
@@ -198,7 +198,7 @@ const HomePage = ({ onNext }) => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="my-6 mx-auto w-48 h-48 rounded-3xl overflow-hidden shadow-lg border-4 border-[#FF9EAA]"
+          className="my-4 sm:my-6 mx-auto w-40 h-40 sm:w-48 sm:h-48 rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-4 border-[#FF9EAA]"
         >
           <img 
             src="https://images.unsplash.com/photo-1767552659473-9a541393de94?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwzfHxzb2Z0JTIwcGFzdGVsJTIwZmxvd2VycyUyMHJvbWFudGljJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NzAyMjY1NTZ8MA&ixlib=rb-4.1.0&q=85"
@@ -214,19 +214,19 @@ const HomePage = ({ onNext }) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={onNext}
-          className="bg-[#FF5D8F] hover:bg-[#FF3B75] text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg flex items-center justify-center gap-2 mx-auto mt-8"
+          className="bg-[#FF5D8F] hover:bg-[#FF3B75] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg flex items-center justify-center gap-2 mx-auto mt-6 sm:mt-8 min-h-[48px]"
           style={{ fontFamily: 'Nunito, sans-serif' }}
           data-testid="start-questionnaire-btn"
         >
           <span>✅ Start Questionnaire</span>
-          <Sparkles className="w-5 h-5" />
+          <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
         </motion.button>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
-          className="text-sm md:text-base font-medium text-[#8C5E69] mt-8"
+          className="text-xs sm:text-sm md:text-base font-medium text-[#8C5E69] mt-6 sm:mt-8"
           style={{ fontFamily: 'Nunito, sans-serif' }}
         >
           Powered by Cupid HQ • Romance Department • ISO Certified Love 😌❤️
