@@ -877,7 +877,7 @@ const FinalPage = ({ onAccept, showThankYou, onDownloadCertificate, onShareWhats
                 — Yours forever,
               </p>
               <p className="text-xl sm:text-2xl md:text-3xl font-bold text-[#FF5D8F] mt-2" style={{ fontFamily: 'Fraunces, serif' }}>
-                Shri Pandey 😌💘
+                Shri Kant Pandey 😌💘
               </p>
             </div>
 
