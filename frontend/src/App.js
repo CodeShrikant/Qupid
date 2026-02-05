@@ -250,13 +250,13 @@ function App() {
 
 🎊 Sona's Official Valentine Certificate 🎊
 
-I, Sona, have been officially approved as Shri Pandey's Valentine (2026 Edition)!
+I, Sona, have been officially approved as Shri Kant Pandey's Valentine (2026 Edition)!
 
 📋 *My Responses:*
 
 *Round 1: Identity Verification*
 Q1. My name: ${answers.q1}
-Q2. Shri Pandey is my: ${answers.q2}
+Q2. Shri Kant Pandey is my: ${answers.q2}
 Q3. His cuteness level: ${answers.q3}
 
 *Round 2: Romance Preferences*
@@ -270,7 +270,7 @@ Q6. Snack expectation: ${answers.q6}
 • Unlimited kisses 😘
 
 — Yours forever,
-Shri Pandey 😌💘
+Shri Kant Pandey 😌💘
 
 Certificate No: VP-2026-${Math.random().toString(36).substr(2, 9).toUpperCase()}
 Date: ${new Date().toLocaleDateString()}`;
