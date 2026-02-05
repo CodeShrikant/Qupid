@@ -880,6 +880,38 @@ const FinalPage = ({ onAccept, showThankYou, onDownloadCertificate, onShareWhats
                 Shri Pandey 😌💘
               </p>
             </div>
+
+            {/* Action Buttons */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-col gap-3 mt-6"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={onDownloadCertificate}
+                className="w-full bg-[#FF5D8F] hover:bg-[#FF3B75] text-white font-bold py-3 sm:py-4 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg flex items-center justify-center gap-2 min-h-[48px]"
+                style={{ fontFamily: 'Nunito, sans-serif' }}
+                data-testid="download-certificate-btn"
+              >
+                <Download className="w-5 h-5" />
+                <span>Download Certificate</span>
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={onShareWhatsApp}
+                className="w-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold py-3 sm:py-4 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg flex items-center justify-center gap-2 min-h-[48px]"
+                style={{ fontFamily: 'Nunito, sans-serif' }}
+                data-testid="share-whatsapp-btn"
+              >
+                <Share2 className="w-5 h-5" />
+                <span>Share on WhatsApp</span>
+              </motion.button>
+            </motion.div>
           </motion.div>
         )}
       </div>
