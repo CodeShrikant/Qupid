@@ -216,7 +216,7 @@ function App() {
           
           <div class="signature">
             <div class="signature-line"></div>
-            <div class="signature-name">Shri Pandey</div>
+            <div class="signature-name">Shri Kant Pandey</div>
             <div style="color: #8C5E69;">Your Forever Valentine</div>
           </div>
           
