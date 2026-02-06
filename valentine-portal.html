@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💘 Sona's Valentine Verification Portal</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Nunito:wght@400;600&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #FFF9FA;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background decoration */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 50px rgba(255, 158, 170, 0.15);
+            border-radius: 24px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            color: #592E36;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'Fraunces', serif;
+            color: #592E36;
+            font-size: 1.75rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8C5E69;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .highlight-box {
+            background: #FFF0F5;
+            border: 2px solid #FF9EAA;
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            font-family: 'Fraunces', serif;
+            color: #FF5D8F;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .image-box {
+            width: 180px;
+            height: 180px;
+            margin: 1.5rem auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 4px solid #FF9EAA;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .question {
+            margin: 1.5rem 0;
+        }
+
+        .question-label {
+            font-weight: 600;
+            color: #592E36;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .option:hover {
+            border-color: #FF9EAA;
+            background: #FFF0F5;
+        }
+
+        .option.selected {
+            border-color: #FF5D8F;
+            background: #FFF0F5;
+        }
+
+        .option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #FF5D8F;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .heart-icon {
+            color: #FF5D8F;
+            font-size: 1.25rem;
+        }
+
+        .button {
+            background: #FF5D8F;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+            font-family: 'Nunito', sans-serif;
+            box-shadow: 0 4px 12px rgba(255, 93, 143, 0.3);
+        }
+
+        .button:hover {
+            background: #FF3B75;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 93, 143, 0.4);
+        }
+
+        .button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .button-secondary {
+            background: #C5A3FF;
+        }
+
+        .button-secondary:hover {
+            background: #B18FFF;
+        }
+
+        .button-success {
+            background: #88D498;
+        }
+
+        .button-success:hover {
+            background: #6FC084;
+        }
+
+        .button-whatsapp {
+            background: #25D366;
+        }
+
+        .button-whatsapp:hover {
+            background: #20BD5A;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #F0E6EF;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #FF5D8F;
+            transition: width 0.3s;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #8C5E69;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkmark {
+            color: #88D498;
+            font-size: 3rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .checklist {
+            background: #FFF0F5;
+            border: 2px solid #FF9EAA;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 0.75rem 0;
+            color: #592E36;
+        }
+
+        .signature {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #FF9EAA;
+        }
+
+        .signature-text {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            color: #592E36;
+            font-style: italic;
+        }
+
+        .signature-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.75rem;
+            color: #FF5D8F;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            color: #8C5E69;
+            font-size: 0.875rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .card {
+                padding: 3rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .image-box {
+                width: 220px;
+                height: 220px;
+            }
+
+            .button-group {
+                flex-direction: row;
+            }
+        }
+
+        /* Decorative blobs */
+        .blob {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            opacity: 0.2;
+            filter: blur(40px);
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .blob-1 {
+            background: #FF9EAA;
+            top: -50px;
+            right: -50px;
+        }
+
+        .blob-2 {
+            background: #C5A3FF;
+            bottom: -50px;
+            left: -50px;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <!-- Decorative blobs -->
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+
+            <!-- Page 1: Home -->
+            <div id="page-home" class="page">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <span style="font-size: 3rem;">❤️</span>
+                </div>
+                <h1>💘 Sona's Valentine Verification Portal</h1>
+                
+                <div class="subtitle">
+                    <p>Hello Sona,</p>
+                    <p>You have been shortlisted for the prestigious position of:</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p>✅ Shri Kant Pandey's Valentine (2026 Edition)</p>
+                </div>
+
+                <div class="subtitle">
+                    <p>Before proceeding, kindly complete this short questionnaire.</p>
+                    <p style="font-family: 'Caveat', cursive; color: #FF5D8F; font-style: italic;">(Refusal is not an option 😌)</p>
+                </div>
+
+                <div class="image-box">
+                    <img src="https://customer-assets.emergentagent.com/job_cupid-hq-sona/artifacts/d4x6167q_1000238583.jpg" alt="Sona & Shri Kant Pandey">
+                </div>
+
+                <button class="button" onclick="goToPage('round1')">✅ Start Questionnaire ✨</button>
+
+                <div class="footer">
+                    Powered by Cupid HQ • Romance Department • ISO Certified Love 😌❤️
+                </div>
+            </div>
+
+            <!-- Page 2: Round 1 -->
+            <div id="page-round1" class="page hidden">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 33.33%"></div>
+                </div>
+                <div class="progress-text">Round 1 of 3</div>
+
+                <h2>🪪 Round 1: Identity Verification</h2>
+                <div class="subtitle">Please confirm the following details to continue:</div>
+
+                <div class="question">
+                    <label class="question-label">Q1. Your name is:</label>
+                    <div class="option" onclick="selectOption('q1', 'Sona', this)">
+                        <input type="radio" name="q1" value="Sona" id="q1-1">
+                        <label for="q1-1">Sona</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q1', 'Sonaaa', this)">
+                        <input type="radio" name="q1" value="Sonaaa" id="q1-2">
+                        <label for="q1-2">Sonaaa</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q1', 'The cutest human alive 😌', this)">
+                        <input type="radio" name="q1" value="The cutest human alive 😌" id="q1-3">
+                        <label for="q1-3">The cutest human alive 😌</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">Q2. Shri Kant Pandey is your:</label>
+                    <div class="option" onclick="selectOption('q2', 'Husband ✅', this)">
+                        <input type="radio" name="q2" value="Husband ✅" id="q2-1">
+                        <label for="q2-1">Husband ✅</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q2', 'Best Husband ✅', this)">
+                        <input type="radio" name="q2" value="Best Husband ✅" id="q2-2">
+                        <label for="q2-2">Best Husband ✅</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q2', 'Full-time admirer ✅😂', this)">
+                        <input type="radio" name="q2" value="Full-time admirer ✅😂" id="q2-3">
+                        <label for="q2-3">Full-time admirer ✅😂</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">Q3. How cute is Shri Kant Pandey today?</label>
+                    <div class="option" onclick="selectOption('q3', 'Cute', this)">
+                        <input type="radio" name="q3" value="Cute" id="q3-1">
+                        <label for="q3-1">Cute</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q3', 'Very cute', this)">
+                        <input type="radio" name="q3" value="Very cute" id="q3-2">
+                        <label for="q3-2">Very cute</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q3', 'Extremely cute (send him kisses) 😤❤️', this)">
+                        <input type="radio" name="q3" value="Extremely cute (send him kisses) 😤❤️" id="q3-3">
+                        <label for="q3-3">Extremely cute (send him kisses) 😤❤️</label>
+                    </div>
+                </div>
+
+                <button class="button" id="round1-btn" onclick="goToPage('round2')" disabled>➡️ Proceed to Round 2</button>
+            </div>
+
+            <!-- Page 3: Round 2 -->
+            <div id="page-round2" class="page hidden">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 66.66%"></div>
+                </div>
+                <div class="progress-text">Round 2 of 3</div>
+
+                <h2>💞 Round 2: Romance Readiness Test</h2>
+                <div class="subtitle" style="font-family: 'Caveat', cursive; font-style: italic;">Your preferences will be noted seriously (but not guaranteed 😌).</div>
+
+                <div class="question">
+                    <label class="question-label">Q4. Choose your ideal Valentine plan:</label>
+                    <div class="option" onclick="selectOption('q4', 'Candlelight dinner 🍽️', this)">
+                        <input type="radio" name="q4" value="Candlelight dinner 🍽️" id="q4-1">
+                        <label for="q4-1">Candlelight dinner 🍽️</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q4', 'Movie + snacks 🍿', this)">
+                        <input type="radio" name="q4" value="Movie + snacks 🍿" id="q4-2">
+                        <label for="q4-2">Movie + snacks 🍿</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q4', 'Long drive + music 🎶', this)">
+                        <input type="radio" name="q4" value="Long drive + music 🎶" id="q4-3">
+                        <label for="q4-3">Long drive + music 🎶</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q4', 'Home date + cuddles 🛌', this)">
+                        <input type="radio" name="q4" value="Home date + cuddles 🛌" id="q4-4">
+                        <label for="q4-4">Home date + cuddles 🛌</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">Q5. Valentine mood level:</label>
+                    <div class="option" onclick="selectOption('q5', 'Normal husband mode 😌', this)">
+                        <input type="radio" name="q5" value="Normal husband mode 😌" id="q5-1">
+                        <label for="q5-1">Normal husband mode 😌</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q5', 'Extra romantic 🥰', this)">
+                        <input type="radio" name="q5" value="Extra romantic 🥰" id="q5-2">
+                        <label for="q5-2">Extra romantic 🥰</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q5', 'Dangerous romance 😈💘', this)">
+                        <input type="radio" name="q5" value="Dangerous romance 😈💘" id="q5-3">
+                        <label for="q5-3">Dangerous romance 😈💘</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">Q6. Valentine snack expectation:</label>
+                    <div class="option" onclick="selectOption('q6', 'Chocolate 🍫', this)">
+                        <input type="radio" name="q6" value="Chocolate 🍫" id="q6-1">
+                        <label for="q6-1">Chocolate 🍫</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q6', 'Dessert 🍰', this)">
+                        <input type="radio" name="q6" value="Dessert 🍰" id="q6-2">
+                        <label for="q6-2">Dessert 🍰</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q6', 'Pizza 🍕', this)">
+                        <input type="radio" name="q6" value="Pizza 🍕" id="q6-3">
+                        <label for="q6-3">Pizza 🍕</label>
+                    </div>
+                    <div class="option" onclick="selectOption('q6', 'Anything if you feed me 😌', this)">
+                        <input type="radio" name="q6" value="Anything if you feed me 😌" id="q6-4">
+                        <label for="q6-4">Anything if you feed me 😌</label>
+                    </div>
+                </div>
+
+                <button class="button" id="round2-btn" onclick="goToPage('final')" disabled>➡️ Final Round</button>
+            </div>
+
+            <!-- Page 4: Final -->
+            <div id="page-final" class="page hidden">
+                <div id="proposal-section">
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <span style="font-size: 3rem;">✨</span>
+                    </div>
+                    <h2>🎉 Final Confirmation</h2>
+
+                    <div class="highlight-box">
+                        <p style="font-size: 1rem; margin-bottom: 1rem;">Dear Sona,</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 1rem;">After careful evaluation, emotional background checks, and love verification…</p>
+                        <p style="font-size: 1.5rem; margin-top: 1rem;">💘 Will you be my Valentine?</p>
+                    </div>
+
+                    <div class="image-box" style="border-color: #C5A3FF;">
+                        <img src="https://customer-assets.emergentagent.com/job_cupid-hq-sona/artifacts/rwi446tg_1000222571.png" alt="Sona">
+                    </div>
+
+                    <div class="button-group" style="flex-direction: column;">
+                        <button class="button" onclick="acceptProposal()">✅ YES</button>
+                        <button class="button button-secondary" onclick="acceptProposal()">✅ YES (with chocolate 🍫)</button>
+                        <button class="button button-success" onclick="acceptProposal()">✅ YES FOREVER 😭❤️</button>
+                    </div>
+                </div>
+
+                <div id="thankyou-section" class="hidden">
+                    <div class="checkmark">✅</div>
+                    <h2>🎊 Application Approved!</h2>
+                    <p style="text-align: center; font-size: 1.5rem; color: #FF5D8F; font-family: 'Fraunces', serif; margin: 1rem 0;">Congratulations Sona ❤️</p>
+
+                    <div class="checklist">
+                        <p style="font-weight: 600; margin-bottom: 1rem; color: #592E36;">Your Valentine (Shri Kant Pandey) will now proceed with:</p>
+                        <div class="checklist-item">
+                            <span style="color: #88D498; font-size: 1.25rem;">✓</span>
+                            <span>date planning</span>
+                        </div>
+                        <div class="checklist-item">
+                            <span style="color: #88D498; font-size: 1.25rem;">✓</span>
+                            <span>surprise arrangements</span>
+                        </div>
+                        <div class="checklist-item">
+                            <span style="color: #88D498; font-size: 1.25rem;">✓</span>
+                            <span>unlimited kisses 😘</span>
+                        </div>
+                    </div>
+
+                    <div class="signature">
+                        <p class="signature-text">— Yours forever,</p>
+                        <p class="signature-name">Shri Kant Pandey 😌💘</p>
+                    </div>
+
+                    <div class="button-group" style="flex-direction: column; margin-top: 2rem;">
+                        <button class="button" onclick="downloadCertificate()">📥 Download Certificate</button>
+                        <button class="button button-whatsapp" onclick="shareWhatsApp()">💬 Share on WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Store answers
+        const answers = {
+            q1: '', q2: '', q3: '', q4: '', q5: '', q6: ''
+        };
+
+        // Page navigation
+        function goToPage(pageName) {
+            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+            document.getElementById('page-' + pageName).classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        // Option selection
+        function selectOption(question, value, element) {
+            answers[question] = value;
+            
+            // Update UI
+            const parent = element.parentElement;
+            parent.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+                const heart = opt.querySelector('.heart-icon');
+                if (heart) heart.remove();
+            });
+            
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+            
+            // Add heart icon
+            if (!element.querySelector('.heart-icon')) {
+                const heart = document.createElement('span');
+                heart.className = 'heart-icon';
+                heart.innerHTML = '❤️';
+                element.appendChild(heart);
+            }
+            
+            // Check if all questions in round are answered
+            checkRoundComplete();
+        }
+
+        function checkRoundComplete() {
+            // Check Round 1
+            if (answers.q1 && answers.q2 && answers.q3) {
+                document.getElementById('round1-btn').disabled = false;
+            }
+            
+            // Check Round 2
+            if (answers.q4 && answers.q5 && answers.q6) {
+                document.getElementById('round2-btn').disabled = false;
+            }
+        }
+
+        function acceptProposal() {
+            // Show confetti
+            const duration = 3000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                    colors: ['#FF9EAA', '#C5A3FF', '#FF5D8F', '#88D498', '#FFF0F5']
+                }));
+                confetti(Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                    colors: ['#FF9EAA', '#C5A3FF', '#FF5D8F', '#88D498', '#FFF0F5']
+                }));
+            }, 250);
+
+            // Show thank you section
+            setTimeout(() => {
+                document.getElementById('proposal-section').classList.add('hidden');
+                document.getElementById('thankyou-section').classList.remove('hidden');
+            }, 1000);
+        }
+
+        function downloadCertificate() {
+            const certId = 'VP-2026-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            
+            const certificateHTML = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Nunito:wght@400;600&family=Caveat:wght@400;700&display=swap');
+        body { margin: 0; padding: 40px; background: linear-gradient(135deg, #FFF0F5 0%, #E6E6FA 100%); font-family: 'Nunito', sans-serif; }
+        .certificate { max-width: 800px; margin: 0 auto; background: white; padding: 60px; border-radius: 30px; box-shadow: 0 20px 60px rgba(255,158,170,0.3); border: 8px solid #FF9EAA; position: relative; }
+        .certificate::before { content: '💘'; position: absolute; top: -30px; left: 50%; transform: translateX(-50%); font-size: 60px; }
+        h1 { font-family: 'Fraunces', serif; color: #FF5D8F; font-size: 48px; text-align: center; margin: 0 0 20px 0; }
+        h2 { font-family: 'Fraunces', serif; color: #592E36; font-size: 36px; text-align: center; margin: 0 0 40px 0; }
+        .subtitle { text-align: center; color: #8C5E69; font-size: 20px; margin-bottom: 40px; }
+        .recipient { text-align: center; font-size: 32px; color: #FF5D8F; font-weight: bold; margin: 30px 0; font-family: 'Fraunces', serif; }
+        .details { background: #FFF0F5; padding: 30px; border-radius: 20px; margin: 30px 0; border: 2px solid #FF9EAA; }
+        .detail-item { margin: 15px 0; font-size: 18px; color: #592E36; }
+        .detail-label { font-weight: 600; color: #FF5D8F; margin-right: 10px; }
+        .signature { margin-top: 50px; text-align: center; }
+        .signature-line { border-top: 2px solid #592E36; width: 300px; margin: 20px auto 10px; }
+        .signature-name { font-family: 'Caveat', cursive; font-size: 32px; color: #FF5D8F; font-weight: 700; }
+        .date { text-align: center; color: #8C5E69; margin-top: 30px; font-size: 16px; }
+        .seal { position: absolute; bottom: 40px; right: 60px; width: 100px; height: 100px; border-radius: 50%; background: #FF5D8F; color: white; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 12px; text-align: center; border: 4px solid #FF9EAA; transform: rotate(-15deg); }
+    </style>
+</head>
+<body>
+    <div class="certificate">
+        <h1>🎊 Official Certificate 🎊</h1>
+        <h2>Valentine Application Approved</h2>
+        <div class="subtitle">This certifies that</div>
+        <div class="recipient">Sona</div>
+        <div class="subtitle">has been officially selected and approved for the prestigious position of</div>
+        <div class="recipient" style="font-size: 28px;">Shri Kant Pandey's Valentine (2026 Edition)</div>
+        
+        <div class="details">
+            <div class="detail-item"><span class="detail-label">Identity Confirmed:</span> ${answers.q1}</div>
+            <div class="detail-item"><span class="detail-label">Relationship Status:</span> ${answers.q2}</div>
+            <div class="detail-item"><span class="detail-label">Cuteness Level:</span> ${answers.q3}</div>
+            <div class="detail-item"><span class="detail-label">Preferred Date:</span> ${answers.q4}</div>
+            <div class="detail-item"><span class="detail-label">Romance Mode:</span> ${answers.q5}</div>
+            <div class="detail-item"><span class="detail-label">Snack Choice:</span> ${answers.q6}</div>
+        </div>
+        
+        <div class="subtitle" style="margin-top: 30px;">
+            ✅ Authorized benefits include:<br/>
+            • Date planning<br/>
+            • Surprise arrangements<br/>
+            • Unlimited kisses 😘
+        </div>
+        
+        <div class="signature">
+            <div class="signature-line"></div>
+            <div class="signature-name">Shri Kant Pandey</div>
+            <div style="color: #8C5E69;">Your Forever Valentine</div>
+        </div>
+        
+        <div class="date">
+            Issued on: ${date}<br/>
+            Certificate No: ${certId}
+        </div>
+        
+        <div class="seal">CERTIFIED<br/>LOVE<br/>2026</div>
+    </div>
+</body>
+</html>`;
+
+            const blob = new Blob([certificateHTML], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Sona_Valentine_Certificate_2026.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function shareWhatsApp() {
+            const certId = 'VP-2026-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            const date = new Date().toLocaleDateString();
+            
+            const message = `💘 *VALENTINE APPLICATION APPROVED* 💘
+
+🎊 Sona's Official Valentine Certificate 🎊
+
+I, Sona, have been officially approved as Shri Kant Pandey's Valentine (2026 Edition)!
+
+📋 *My Responses:*
+
+*Round 1: Identity Verification*
+Q1. My name: ${answers.q1}
+Q2. Shri Kant Pandey is my: ${answers.q2}
+Q3. His cuteness level: ${answers.q3}
+
+*Round 2: Romance Preferences*
+Q4. Ideal Valentine plan: ${answers.q4}
+Q5. Mood level: ${answers.q5}
+Q6. Snack expectation: ${answers.q6}
+
+✅ *Benefits Unlocked:*
+• Date planning
+• Surprise arrangements
+• Unlimited kisses 😘
+
+— Yours forever,
+Shri Kant Pandey 😌💘
+
+Certificate No: ${certId}
+Date: ${date}`;
+
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
